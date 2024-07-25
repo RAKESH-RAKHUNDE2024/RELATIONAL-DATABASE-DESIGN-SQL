@@ -1,5 +1,7 @@
 
-                                                 -----> PROJECT:- RELATIONAL DATABASE DESIGN <-----                                             ----  CREATE TABLES & DEFINE RELATIONS / ATTRIBUTES -----
+                                                 ----- PROJECT:- RELATIONAL DATABASE DESIGN -----
+
+                                             ----  CREATE TABLES & DEFINE RELATIONS / ATTRIBUTES -----
 
 
 -- Q 1) INSERT DATA INTO EACH OF THE ABOVE TABLES. WITH ATLEAST TWO ROWS IN EACH OF THE TABLES. MAKE SURE THAT YOU HAVE CREATED RESPECTIVE FOREIGN KEYS ?  
@@ -11,13 +13,11 @@ UserName VARCHAR (50) NOT NULL,
 Email VARCHAR(100)
 );
 
-
 -- ROLES TABLE:-
 CREATE TABLE ROLES (
 RoleID INT PRIMARY KEY,
 RoleName VARCHAR (50) NOT NULL
 );
-
 
 -- USER ACCOUNTS TABLE:-
 CREATE TABLE USER_ACCOUNTS (
@@ -28,7 +28,6 @@ Password VARCHAR(50) NOT NULL,
 FOREIGN KEY (UserID) REFERENCES USERS(UserID)
 );
 
-
 -- USER_HAS_ROLE TABEL:- (JUNCTION TABEL FOR MANY-TO-MANY RELATIONSHIP)
 CREATE TABLE USER_HAS_ROLE (
 UserHasRoleID INT PRIMARY KEY,
@@ -38,13 +37,11 @@ FOREIGN KEY (UserID) REFERENCES USERS(UserID),
 FOREIGN KEY (RoleID) REFERENCES ROLES(RoleID)
 );
 
-
 -- STATUS TABEL:-
 CREATE TABLE STATUS (
 StatusID INT PRIMARY KEY,
 StatusName VARCHAR(50) NOT NULL,
 );
-
 
 
 -- USER_HAS_STATUS TABEL:- (JUNCTION TABEL FOR MANY-TO-MANY RELATIONSHIP)
@@ -55,30 +52,27 @@ StatusID INT,
 FOREIGN KEY (UserID) REFERENCES USERS(UserID),
 FOREIGN KEY (StatusID) REFERENCES STATUS(StatusID)
 );
-                                                       --------- INSERT DATA INTO TABLES ---------
+
+                                                       --------- INSERT DATA INTO TABLES ---------
 
 -- INSERT DATA INTO USERS TABLE
-
 INSERT INTO USERS (UserID,UserName,Email)
 VALUES (1,'John Doe', 'John.Doe@Example.Com'),
        (2,'Jane Smith','Jane.Smith@Example.Com'); 
 
 
 -- INSERT DATA INTO ROLES TABLE
-
 INSERT INTO ROLES (RoleID, RoleName)
 VALUES (1, 'Admin'),
        (2, 'User'); 
 
 -- INSERT DATA INTO USER_ACCOUNTS TABLE
-
 INSERT INTO USER_ACCOUNTS(AccountID, UserID, UserName, Password)
 VALUES (1, 1,'Jane_Doe','Password1'),
        (2, 2,'Jane_Smith','Password2');
 
 
 -- INSERT DATA INTO USER_HAS_ROLE TABLE
-
 INSERT INTO USER_HAS_ROLE (UserHasRoleID, UserID, RoleID)
 VALUES (1, 1, 1),              --- JOHN DOE IS AN ADMIN
        (2, 2, 2);              --- JANE SMITH IS A USER        
@@ -94,9 +88,10 @@ VALUES (1, 'Active'),
 INSERT INTO USER_HAS_STATUS (UserHasStatusID, UserID, StatusID)
 VALUES (1, 1, 1),       --- JOHN DOE IS ACTIVE
        (2, 2, 2);       --- JANE SMITH IS INACTIVE   
-                                                 ------  DELETE ALL DATA FROM TABLES  ------
- -- Q 2) DELETE ALL THE DATA FROM EACH OF THE TABLES ?
+ 
+                                                ------  DELETE ALL DATA FROM TABLES  ------
 
+-- Q 2) DELETE ALL THE DATA FROM EACH OF THE TABLES ?
 
 -- DELETE ALL DATA FROM USER_HAS_STATUS TABLE
 DELETE FROM USER_HAS_STATUS
@@ -118,4 +113,10 @@ DELETE FROM USERS
 
 
                                                       ------- FINAL OUTPUT -------
- SELECT * FROM USERS SELECT * FROM ROLES SELECT * FROM USER_ACCOUNTS SELECT * FROM USER_HAS_ROLE SELECT * FROM STATUS SELECT * FROM USER_HAS_STATUS
+
+ SELECT * FROM USERS
+ SELECT * FROM ROLES
+ SELECT * FROM USER_ACCOUNTS
+ SELECT * FROM USER_HAS_ROLE
+ SELECT * FROM STATUS
+ SELECT * FROM USER_HAS_STATUS
