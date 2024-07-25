@@ -1,0 +1,42 @@
+
+                                                       --------- INSERT DATA INTO TABLES ---------
+
+
+-- INSERT DATA INTO USERS TABLE
+
+INSERT INTO USERS (UserID,UserName,Email)
+VALUES (1,'John Doe', 'John.Doe@Example.Com'),
+       (2,'Jane Smith','Jane.Smith@Example.Com'); 
+
+
+-- INSERT DATA INTO ROLES TABLE
+
+INSERT INTO ROLES (RoleID, RoleName)
+VALUES (1, 'Admin'),
+       (2, 'User'); 
+
+-- INSERT DATA INTO USER_ACCOUNTS TABLE
+
+INSERT INTO USER_ACCOUNTS(AccountID, UserID, UserName, Password)
+VALUES (1, 1,'Jane_Doe','Password1'),
+       (2, 2,'Jane_Smith','Password2');
+
+
+-- INSERT DATA INTO USER_HAS_ROLE TABLE
+
+INSERT INTO USER_HAS_ROLE (UserHasRoleID, UserID, RoleID)
+VALUES (1, 1, 1),              --- JOHN DOE IS AN ADMIN
+       (2, 2, 2);              --- JANE SMITH IS A USER        
+
+ 
+-- INSERT DATA INTO STATUS TABLE
+INSERT INTO STATUS (StatusID, StatusName)
+VALUES (1, 'Active'),
+       (2, 'Inactive');
+
+
+-- INSERT DATA INTO USER_HAS_STATUS TABLE
+INSERT INTO USER_HAS_STATUS (UserHasStatusID, UserID, StatusID)
+VALUES (1, 1, 1),       --- JOHN DOE IS ACTIVE
+       (2, 2, 2);       --- JANE SMITH IS INACTIVE   
+ 
